@@ -17,7 +17,8 @@ cpixy = 0 #current pixel coordinate y
 black = false #if all pixels are black?
 
 while black == false
-    img[cpixx,]
+    img[cpixx,pixy] = (0,0,0)
+    if ()
 
     cv2.imshow('image',img)
     cv2.waitKey(0)
