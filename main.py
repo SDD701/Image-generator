@@ -5,20 +5,35 @@ import matplotlib.pyplot as mpl
 #ALGO:
 #1 IF IT'S UNPAINTED = PAINT IT
 #2 IF IT'S PAINTED = PAINT THE NEXT UNPAINTED PIXEL
-#  AND CLEEAR ALL PIXELS ON THE LEFT TO IT
+#  AND CLEAR ALL PIXELS ON THE LEFT TO IT
 
-img = np.zeros( (100,100,3), np.uint8 )
-img[:,:] = (255,255,255)
+Widght, Height = 100, 100
 
-print(img)
+Img = np.zeros( (Widght, Height, 3), np.uint8 )
+Img[:,:] = (255,255,255)
 
-cpixx = 0 #current pixel coordinate x
-cpixy = 0 #current pixel coordinate y
-black = false #if all pixels are black?
+print(Img[10,10])
 
-while black == false
-    img[cpixx,pixy] = (0,0,0)
-    if ()
+Cpixx = 0 #current pixel coordinate x (stands for Current PIXel X)
+Cpixy = 0 #current pixel coordinate y
+Black = False #if all pixels are black?
+WhitePixel = np.array([255,255,255])
 
-    cv2.imshow('image',img)
-    cv2.waitKey(0)
+while Black == False:
+    #step 1
+    if np.array_equal(Img[Cpixx, Cpixy], WhitePixel) == True:
+        Img[Cpixx, Cpixy] = (0,0,0)
+
+    #step 2
+    #if
+
+    if Cpixx < Widght:
+        Cpixx = Cpixx + 1
+    if Cpixx == Widght and Cpixy < Height:
+        Cpixy = Cpixy + 1
+        Cpixx = 0
+        if Cpixy == Height and Cpixx == Widght:
+            Black = True
+
+    cv2.imshow('image', Img)
+    cv2.waitKey(1)
