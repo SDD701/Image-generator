@@ -10,6 +10,7 @@ import matplotlib.pyplot as mpl
 Widght, Height = 100, 100
 
 Img = np.zeros( (Widght, Height, 3), np.uint8 )
+Widght, Height = Widght-1, Height-1 #because the counting starts from 0
 Img[:,:] = (255,255,255)
 
 print(Img[10,10])
@@ -27,6 +28,13 @@ while Black == False:
 
     #step 2 part 1/2
     if np.array_equal(Img[Cpixx, Cpixy], BlackPixel) == True:
+        i = 0
+        j = 0
+        while np.array_equal(Img[Cpixx + i, Cpixy + j], WhitePixel) !=True:
+            if Cpixx + i == Widght:
+                j = j + 1
+                i = -1
+            i = i+1
         if Cpixx < Widght:
             Img[Cpixx + 1, Cpixy] = (0,0,0)
         if Cpixx == Widght and Cpixy < Height:
@@ -34,9 +42,9 @@ while Black == False:
     #step 2 part 2/2
         if Cpixy != Height:
             y = Cpixy
-            for y in range(y, -1):
-                x = Cpixx
-                for x in range(x, -1):
+            for y in range(y, -1, -1):
+                x = Cpixx + 1
+                for x in range(x, -1, -1):
                     Img[x, y] = (255,255,255)
 
     #iterator
