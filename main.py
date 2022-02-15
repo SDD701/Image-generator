@@ -32,7 +32,7 @@ while Black == False:
     if Cpixx == Widght and Cpixy < Height:
         Cpixy = Cpixy + 1
         Cpixx = 0
-        if Cpixy == Height and Cpixx == Widght:
+        if Cpixy == Height and Cpixx == 0:
             Black = True
 
     cv2.imshow('image', Img)
