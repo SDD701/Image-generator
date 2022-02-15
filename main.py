@@ -39,7 +39,7 @@ while Black == False:
         if Cpixy != Height:
             y = Cpixy
             for y in range(y, -1, -1):
-                x = Cpixx
+                x = Cpixx 
                 for x in range(x, -1, -1):
                     Img[x, y] = (255,255,255)
 
