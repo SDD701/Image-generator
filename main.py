@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from PIL import Image
 import matplotlib.pyplot as mpl
 
 #ALGO:
@@ -7,7 +8,7 @@ import matplotlib.pyplot as mpl
 #2 IF IT'S PAINTED = PAINT THE NEXT UNPAINTED PIXEL
 #  AND CLEAR ALL PIXELS ON THE LEFT TO IT
 
-Widght, Height = 200, 200
+Widght, Height = 256, 256
 
 Img = np.zeros( (Widght, Height, 3), np.uint8 )
 #Widght, Height = Widght-1, Height-1 #because the counting starts from 0
@@ -19,6 +20,7 @@ Cpixx = 0 #current pixel coordinate x (stands for Current PIXel X)
 Cpixy = 0 #current pixel coordinate y
 Black = False #if all pixels are black?
 WhitePixel = np.array([255,255,255])
+name = 1
 
 while Black == False:
     while Cpixx < Widght:
@@ -30,6 +32,11 @@ while Black == False:
                 for Cpixy in range(Cpixy - 1, -1, -1):
                     for Cpixx in range(Cpixx, -1, -1):
                         Img[Cpixx, Cpixy] = (255,255,255)
+                #output
+                Im = Image.fromarray(Img)
+                Im.convert("1")
+                Im.save("D:\Projects\Image generator\images\", 'JPEG')
+                name = name + 1
             elif Cpixy < Height - 1:
                 Cpixy = Cpixy + 1
             else:
@@ -39,9 +46,10 @@ while Black == False:
                 if Cpixx == Widght:
                     Black = True
                     Cpixy = Height
-            #output
-            cv2.imshow('image', Img)
-            cv2.waitKey(1)
+
+
+            #cv2.imshow('image', Img)
+            #cv2.waitKey(1)
 
     #cv2.imshow('image', Img)
     #cv2.waitKey(0)
