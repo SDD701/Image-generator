@@ -33,10 +33,12 @@ while Black == False:
                     for Cpixx in range(Cpixx, -1, -1):
                         Img[Cpixx, Cpixy] = (255,255,255)
                 #output
-                Im = Image.fromarray(Img)
-                Im.convert("1")
-                Im.save("D:\Projects\Image generator\images\", 'JPEG')
-                name = name + 1
+                #Im = Image.fromarray(Img)
+                #Im.convert("1")
+                #Im.save(f"D:\Projects\Image generator\images\{name:04d}.jpeg", 'JPEG')
+                #name = name + 1
+                cv2.imshow('image', Img)
+                cv2.waitKey(1)
             elif Cpixy < Height - 1:
                 Cpixy = Cpixy + 1
             else:
@@ -48,8 +50,7 @@ while Black == False:
                     Cpixy = Height
 
 
-            #cv2.imshow('image', Img)
-            #cv2.waitKey(1)
+
 
     #cv2.imshow('image', Img)
     #cv2.waitKey(0)
